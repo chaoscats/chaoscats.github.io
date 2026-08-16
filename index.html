@@ -4,9 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<!-- ============================================================
-     SEO & SOCIAL META
-============================================================ -->
 <title>ChaosCats 🐾 10,000 Unhinged Knight Cats on the Blockchain</title>
 <meta name="description" content="ChaosCats is 10,000 fully unhinged knight cats running wild on-chain. Rusty swords, trash-lid shields, bucket hats, zero brain cells shared. Equip your chaos.">
 <meta name="keywords" content="ChaosCats, NFT, NFT collection, blockchain cats, PFP collection, mint NFT, meme NFT">
@@ -20,7 +17,10 @@
 <meta name="twitter:title" content="ChaosCats — 10,000 Unhinged Knight Cats">
 <meta name="twitter:description" content="Modern Knights. Medieval Swag. Zero Braincells.">
 
-<!-- Fonts: Baloo 2 (chunky kawaii display) + Permanent Marker (sticker scrawl) + Nunito (round friendly body) + Space Mono (data) -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Permanent+Marker&family=Nunito:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -82,7 +82,7 @@ body{
   -webkit-font-smoothing: antialiased;
   cursor: default;
 }
-img{ max-width:100%; display:block; }
+img{ max-width:100%; height:auto; display:block; }
 a{ color:inherit; text-decoration:none; }
 ul{ margin:0; padding:0; list-style:none; }
 h1,h2,h3,h4{ margin:0; font-family: var(--font-display); font-weight:800; letter-spacing:0.005em; }
@@ -106,15 +106,14 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
   margin: 0 auto;
   padding: 0 clamp(16px, 4vw, 24px);
 }
-.section{ padding: clamp(56px, 9vw, 100px) 0; }
+.section{ padding: clamp(48px, 8vw, 100px) 0; }
 
-/* Sticker tag (formerly "eyebrow") */
 .sticker-tag{
   display:inline-flex;
   align-items:center;
   gap:8px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: clamp(10px, 2.5vw, 12px);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink);
@@ -143,13 +142,13 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
   margin-top: 16px;
 }
 
-/* Marker-scribble underline (formerly .scribble) */
 .marker{ position:relative; white-space: nowrap; color: var(--bubblegum); }
 .marker svg{ position:absolute; left:-3%; right:-3%; bottom:-0.16em; width:106%; height:0.32em; }
 
 .btn{
   display:inline-flex;
   align-items:center;
+  justify-content: center;
   gap:8px;
   font-family: var(--font-display);
   font-weight:700;
@@ -168,7 +167,6 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
 .btn-ghost:hover{ transform: translate(-2px,-2px) rotate(1deg); background: var(--mint); }
 .btn-ghost:active{ transform: translate(1px,1px) scale(.97); }
 
-/* Sticker badge (formerly .stamp) — glossy round-ish patch */
 .sticker-badge{
   font-family: var(--font-hand);
   font-size: 0.9rem;
@@ -191,9 +189,8 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
   border-bottom: 3px solid var(--ink);
   overflow: hidden;
   white-space: nowrap;
-  position: sticky;
-  top: 0;
-  z-index: 99;
+  position: relative;
+  z-index: 101;
 }
 .ticker-track{
   display:inline-flex;
@@ -216,9 +213,9 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
 ========================================================== */
 .navbar{
   position: sticky;
-  top: 34px;
+  top: 0;
   z-index: 100;
-  background: rgba(255,247,236,0.86);
+  background: rgba(255,247,236,0.92);
   backdrop-filter: blur(10px);
   border-bottom: 3px solid var(--ink);
 }
@@ -226,7 +223,7 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
   display:flex;
   align-items:center;
   justify-content: space-between;
-  padding: 12px clamp(16px,4vw,24px);
+  padding: 10px clamp(16px,4vw,24px);
   max-width: 1180px;
   margin: 0 auto;
 }
@@ -237,11 +234,12 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
   border: 2.5px solid var(--ink);
   background: var(--lemon);
   display:flex; align-items:center; justify-content:center;
-  font-size: 1.35rem;
+  overflow: hidden;
   flex-shrink:0;
   box-shadow: 2px 3px 0 var(--ink);
   transition: transform .2s ease;
 }
+.brand-mark img{ width: 100%; height: 100%; object-fit: cover; }
 .brand:hover .brand-mark{ transform: rotate(-14deg) scale(1.08); }
 .brand span{ font-family: var(--font-display); font-weight:800; font-size: 1.5rem; }
 .nav-links{ display:flex; gap: 28px; font-weight:800; font-size: 0.94rem; font-family: var(--font-display); }
@@ -271,16 +269,18 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
 
 @media (max-width: 860px){
   .nav-links{
-    position: fixed; inset: 92px 0 auto 0;
+    position: fixed; 
+    top: 67px; left:0; right:0;
     background: var(--cream);
     border-bottom: 3px solid var(--ink);
     flex-direction: column;
     gap:0;
     padding: 8px 24px 18px;
-    transform: translateY(-120%);
+    transform: translateY(-150%);
     transition: transform .25s ease;
-    max-height: calc(100vh - 92px);
+    max-height: calc(100vh - 67px);
     overflow-y:auto;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
   }
   .nav-links.open{ transform: translateY(0); }
   .nav-links a{ padding: 13px 0; border-bottom: 2px dashed rgba(32,21,48,0.15); }
@@ -291,24 +291,21 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
 /* ==========================================================
    4. HERO
 ========================================================== */
-.hero{ padding: clamp(40px,7vw,72px) 0 clamp(40px,6vw,60px); position: relative; overflow: hidden; }
+.hero{ padding: clamp(30px,6vw,72px) 0 clamp(40px,6vw,60px); position: relative; overflow: hidden; }
 .hero-grid{ display:grid; grid-template-columns: 1.08fr 0.92fr; gap: clamp(24px,4vw,40px); align-items:center; }
 @media (max-width: 900px){ .hero-grid{ grid-template-columns: 1fr; } }
 
 .hero-tagline{ font-family: var(--font-hand); font-weight: 400; color: var(--grape); font-size: 1.4rem; margin-top: 18px; transform: rotate(-1deg); display:inline-block; }
 .hero-copy p.section-sub{ margin-top:14px; }
 .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-top: 30px; }
-
-.headline .comic-outline{
-  -webkit-text-stroke: 2px var(--ink);
-  paint-order: stroke fill;
+@media (max-width: 480px){
+  .hero-ctas .btn{ width: 100%; }
 }
 
-.stat-strip{ display:flex; gap: clamp(18px,4vw,34px); flex-wrap: wrap; margin-top: 42px; padding-top: 24px; border-top: 3px dashed rgba(32,21,48,0.22); }
+.stat-strip{ display:flex; gap: clamp(14px,3vw,34px); flex-wrap: wrap; margin-top: 42px; padding-top: 24px; border-top: 3px dashed rgba(32,21,48,0.22); }
 .stat-strip .stat b{ display:block; font-family: var(--font-display); font-weight:800; font-size: clamp(1.35rem,3vw,1.85rem); line-height:1.2; }
 .stat-strip .stat span{ font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-soft); }
 
-/* ---- Chaos Roller (signature generative widget, now a glossy sticker) ---- */
 .roller-wrap{ position:relative; }
 .roller-card{
   background: var(--card);
@@ -322,12 +319,13 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
 }
 .roller-card::after{
   content:"";
-  position:absolute; top:-14px; right:26px;
-  width:70px; height:26px;
-  background: repeating-linear-gradient(-45deg, rgba(255,216,77,.75) 0 6px, rgba(255,216,77,.5) 6px 12px);
-  border: 2px solid rgba(32,21,48,0.35);
-  transform: rotate(-7deg);
+  position:absolute; top:-12px; right: 18px;
+  width:60px; height:22px;
+  background: repeating-linear-gradient(-45deg, rgba(255,216,77,.85) 0 6px, rgba(255,216,77,.6) 6px 12px);
+  border: 1.5px solid rgba(32,21,48,0.35);
+  transform: rotate(-5deg);
   opacity:.9;
+  z-index: 4;
 }
 .roller-head{ display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
 .roller-head b{ font-family: var(--font-display); font-weight:800; font-size: 0.85rem; letter-spacing:0.02em; text-transform:uppercase; }
@@ -344,17 +342,15 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
   position: relative;
   display:flex; align-items:center; justify-content:center;
 }
-.knight-avatar{
-  position:relative;
+.knight-avatar-img{
   width: 100%; height:100%;
-  border-radius: 50%;
+  border-radius: 20px;
   border: var(--ink-border-thick);
-  box-shadow: 0 10px 0 rgba(32,21,48,0.85);
-  display:flex; align-items:center; justify-content:center;
-  overflow: visible;
+  box-shadow: 0 8px 0 rgba(32,21,48,0.85);
+  object-fit: cover;
   transition: transform .12s ease;
 }
-.knight-avatar.rolling{ animation: shake .5s ease; }
+.knight-avatar-img.rolling{ animation: shake .5s ease; }
 @keyframes shake{
   0%,100%{ transform: rotate(0deg) scale(1); }
   20%{ transform: rotate(-9deg) scale(0.94); }
@@ -362,18 +358,10 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
   60%{ transform: rotate(-5deg) scale(1.04); }
   80%{ transform: rotate(4deg) scale(1.04); }
 }
-.knight-avatar .layer{ position:absolute; line-height:1; filter: drop-shadow(1px 2px 0 rgba(0,0,0,0.25)); }
-.knight-avatar .layer-face{ font-size: 42%; inset:0; display:flex; align-items:center; justify-content:center; }
-.knight-avatar .layer-wings{ font-size: 30%; top: 14%; left: -6%; transform: scaleX(-1) rotate(-8deg); opacity:.92; }
-.knight-avatar .layer-hat{ font-size: 27%; top: -9%; left: 50%; transform: translateX(-50%) rotate(-6deg); }
-.knight-avatar .layer-glasses{ font-size: 22%; top: 40%; left: 50%; transform: translateX(-50%); }
-.knight-avatar .layer-weapon{ font-size: 26%; bottom: 2%; right: -4%; transform: rotate(20deg); }
-.knight-avatar .layer-necklace{ font-size: 16%; top: 62%; left: 50%; transform: translateX(-50%); }
 
 .roller-traits{ margin-top: 18px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; font-family: var(--font-mono); font-size: 0.72rem; }
 .roller-traits span{ background: var(--cream); border: 1.5px solid var(--ink); border-radius: 999px; padding: 4px 10px; }
 
-/* Mascot speech bubble */
 .mascot-bubble{
   margin: 16px auto 0;
   max-width: 92%;
@@ -405,9 +393,9 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
 
 .roller-caption{ text-align:center; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing:.04em; text-transform:uppercase; color: var(--ink-soft); margin-top: 14px; }
 
-.floaty{ position:absolute; z-index:1; }
-.floaty-1{ top:-16px; right: 6%; transform: rotate(9deg); animation: bob 3.4s ease-in-out infinite; }
-.floaty-2{ bottom: -14px; left: -10px; transform: rotate(-8deg); animation: bob 3.4s ease-in-out infinite .6s; }
+.floaty{ position:absolute; z-index:3; pointer-events:none; }
+.floaty-1{ top:-24px; right: -12px; transform: rotate(9deg); animation: bob 3.4s ease-in-out infinite; }
+.floaty-2{ bottom: -20px; left: -18px; transform: rotate(-8deg); animation: bob 3.4s ease-in-out infinite .6s; }
 @keyframes bob{ 0%,100%{ transform: translateY(0) rotate(var(--r,0deg)); } 50%{ transform: translateY(-8px) rotate(var(--r,0deg)); } }
 @media (max-width: 640px){ .floaty{ display:none; } }
 
@@ -419,7 +407,7 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
 .about-card{ background: var(--card); border: var(--ink-border-thick); border-radius: var(--radius-lg); padding: clamp(22px,4vw,34px); box-shadow: var(--shadow-sticker-lg); transform: rotate(-0.6deg); }
 .about-card p{ color: var(--ink-soft); margin-top:14px; font-size: 1.02rem; font-weight:700; }
 .about-card p + p{ margin-top:12px; }
-.about-quote{ font-family: var(--font-hand); font-weight:400; font-size: clamp(1.5rem,3vw,1.9rem); color: var(--bubblegum); margin-top: 18px; line-height:1.2; transform: rotate(-1deg); display:inline-block; }
+.about-quote{ font-family: var(--font-hand); font-weight:400; font-size: clamp(1.3rem,3vw,1.9rem); color: var(--bubblegum); margin-top: 18px; line-height:1.2; transform: rotate(-1deg); display:inline-block; }
 
 .about-panel{
   background: var(--ink);
@@ -431,8 +419,8 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
   transform: rotate(1deg);
   position: relative;
 }
-.about-panel .mini-knights{ display:flex; gap: 12px; }
-.about-panel .mini-knights .knight-stage{ width: 78px; margin:0; }
+.about-panel .mini-knights{ display:flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.about-panel .mini-knights .knight-stage{ width: clamp(70px, 20vw, 90px); margin:0; }
 .about-panel .mini-knights .knight-stage:nth-child(2n){ transform: translateY(-6px); }
 .about-panel small{ font-family: var(--font-mono); font-size:0.68rem; color:#CFC3F0; text-align:center; letter-spacing:0.04em; }
 
@@ -448,10 +436,10 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
   padding: 24px 20px; box-shadow: var(--shadow-sticker);
   transition: transform .18s ease, box-shadow .18s ease;
 }
-.feature-card:nth-child(1){ transform: rotate(-2.4deg); }
-.feature-card:nth-child(2){ transform: rotate(1.6deg); }
-.feature-card:nth-child(3){ transform: rotate(-1.4deg); }
-.feature-card:nth-child(4){ transform: rotate(2.2deg); }
+.feature-card:nth-child(1){ transform: rotate(-1.5deg); }
+.feature-card:nth-child(2){ transform: rotate(1.2deg); }
+.feature-card:nth-child(3){ transform: rotate(-1deg); }
+.feature-card:nth-child(4){ transform: rotate(1.5deg); }
 .feature-card:hover{ transform: rotate(0deg) translateY(-7px) scale(1.02); box-shadow: 0 14px 0 var(--ink); }
 .feature-icon{ width: 52px; height:52px; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size: 1.45rem; border: 2.5px solid var(--ink); margin-bottom: 14px; box-shadow: 2px 3px 0 var(--ink); }
 .feature-card h3{ font-size: 1.08rem; font-family: var(--font-display); font-weight:800; }
@@ -473,22 +461,23 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
 .panel-dark .headline{ color:#fff; }
 
 /* ==========================================================
-   8. GALLERY (generative — composed from on-chain trait data)
+   8. GALLERY
 ========================================================== */
 .gallery-grid{ display:grid; grid-template-columns: repeat(5, 1fr); gap: 18px; margin-top: 46px; }
 @media (max-width: 1020px){ .gallery-grid{ grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 640px){ .gallery-grid{ grid-template-columns: repeat(2, 1fr); gap:12px; } }
+@media (max-width: 400px){ .gallery-grid{ grid-template-columns: 1fr; } }
 
 .gallery-card{
   background:#fff; border-radius: var(--radius-md); border: 2.5px solid var(--ink);
-  padding: 14px 10px 12px; transition: transform .2s ease, box-shadow .2s ease;
+  padding: 12px 10px 12px; transition: transform .2s ease, box-shadow .2s ease;
   box-shadow: 5px 6px 0 rgba(0,0,0,0.55);
 }
-.gallery-card .knight-stage{ width: 76%; margin: 0 auto 10px; }
-.gallery-card:nth-child(odd){ transform: rotate(-2.4deg); }
-.gallery-card:nth-child(even){ transform: rotate(2deg); }
+.gallery-card .knight-stage{ width: 100%; margin: 0 auto 10px; }
+.gallery-card:nth-child(odd){ transform: rotate(-1.5deg); }
+.gallery-card:nth-child(even){ transform: rotate(1.5deg); }
 .gallery-card:hover{ transform: rotate(0deg) translateY(-7px) scale(1.04); box-shadow: 8px 10px 0 rgba(0,0,0,0.6); z-index:5; position:relative; }
-.gallery-card figcaption{ display:flex; justify-content: space-between; align-items:center; font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink); padding: 4px 2px 0; }
+.gallery-card figcaption{ display:flex; justify-content: space-between; align-items:center; font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink); padding: 4px 4px 0; }
 .gallery-card figcaption b{ font-family: var(--font-hand); font-weight:400; font-size:1.05rem; }
 .gallery-note{ text-align:center; margin-top: 30px; color: #C9C1E0; font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.05em; }
 
@@ -528,7 +517,7 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
 /* ==========================================================
    10. FINAL CTA
 ========================================================== */
-.cta-band{ background: var(--bubblegum); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); text-align:center; padding: clamp(60px,10vw,90px) 20px; position:relative; overflow:hidden; }
+.cta-band{ background: var(--bubblegum); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); text-align:center; padding: clamp(50px,8vw,90px) 20px; position:relative; overflow:hidden; }
 .cta-band h2{ font-size: clamp(1.95rem, 5.6vw, 3.5rem); color:#fff; -webkit-text-stroke: 1.5px var(--ink); }
 .cta-band p{ color: rgba(255,255,255,0.95); margin-top:14px; font-size:clamp(0.95rem,2vw,1.05rem); font-weight:800; }
 .cta-band .hero-ctas{ justify-content:center; margin-top:30px; }
@@ -564,7 +553,7 @@ footer ul li a:hover{ color: var(--lemon); }
 .reveal.in{ opacity:1; transform: translateY(0); }
 
 /* ==========================================================
-   13. FX LAYER — confetti / paw trail / comic bursts
+   13. FX LAYER
 ========================================================== */
 #fxLayer{ position:fixed; inset:0; pointer-events:none; z-index:9999; overflow:hidden; }
 
@@ -601,7 +590,6 @@ footer ul li a:hover{ color: var(--lemon); }
 </head>
 <body>
 
-<!-- FX LAYER -->
 <div id="fxLayer" aria-hidden="true"></div>
 
 <!-- MARQUEE TICKER -->
@@ -616,7 +604,7 @@ footer ul li a:hover{ color: var(--lemon); }
 <header class="navbar">
   <div class="nav-inner">
     <a href="#top" class="brand">
-      <span class="brand-mark">🐱</span>
+      <span class="brand-mark"><img src="assets/apple-touch-icon.png" alt="ChaosCats Logo"></span>
       <span>ChaosCats</span>
     </a>
 
@@ -671,7 +659,7 @@ footer ul li a:hover{ color: var(--lemon); }
           <span class="roller-tier" id="rollerTier">COMMON</span>
         </div>
         <div class="knight-stage">
-          <div class="knight-avatar" id="knightAvatar"></div>
+          <img class="knight-avatar-img" id="knightAvatar" src="assets/knight-5458.png" alt="Featured ChaosCat Knight">
         </div>
         <div class="roller-traits" id="rollerTraits"></div>
         <p class="mascot-bubble" id="mascotSpeech">just a lil guy 🐾</p>
@@ -698,7 +686,7 @@ footer ul li a:hover{ color: var(--lemon); }
 
     <div class="about-panel reveal">
       <div class="mini-knights" id="aboutKnights"></div>
-      <small>EVERY KNIGHT ABOVE WAS ASSEMBLED LIVE, RIGHT NOW, IN YOUR BROWSER</small>
+      <small>FEATURED KNIGHTS FROM THE ORDER</small>
     </div>
   </div>
 </section>
@@ -738,7 +726,7 @@ footer ul li a:hover{ color: var(--lemon); }
   <div class="section wrap">
     <span class="sticker-tag">🖼️ Meet The Order</span>
     <h2 class="headline" style="font-size: clamp(1.8rem, 4.5vw, 2.6rem);">A Few Knights of the Order</h2>
-    <p class="section-sub">Ten knights, ten different rolls of the chaos dice. Every trait combination is generated on mint — the ones below are live, generated the same way.</p>
+    <p class="section-sub">Ten knights, ten different rolls of the chaos dice. Every trait combination is generated on mint — explore uploaded assets live below.</p>
 
     <div class="gallery-grid" id="galleryGrid"></div>
     <p class="gallery-note">SHOWING 10 OF 10,000 KNIGHTS · FULL COLLECTION REVEALED AT MINT</p>
@@ -782,7 +770,7 @@ footer ul li a:hover{ color: var(--lemon); }
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
-          <span class="brand-mark">🐱</span>
+          <span class="brand-mark"><img src="assets/apple-touch-icon.png" alt="ChaosCats Logo"></span>
           <span>ChaosCats</span>
         </div>
         <p class="tag">10,000 unhinged knight cats running wild on the blockchain. Modern Knights. Medieval Swag. Zero Braincells.</p>
@@ -823,9 +811,7 @@ footer ul li a:hover{ color: var(--lemon); }
 </footer>
 
 <script>
-/* ============================================================
-   MOBILE NAV
-============================================================ */
+/* MOBILE NAV */
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 menuToggle.addEventListener('click', () => {
@@ -837,19 +823,14 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   menuToggle.setAttribute('aria-expanded', 'false');
 }));
 
-/* ============================================================
-   SCROLL REVEAL
-============================================================ */
+/* SCROLL REVEAL */
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.15 });
 revealEls.forEach(el => io.observe(el));
 
-/* ============================================================
-   FX: paw-print cursor trail, confetti bursts, comic pop-text
-   Purely decorative/additive — respects prefers-reduced-motion.
-============================================================ */
+/* FX LAYER */
 const REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fxLayer = document.getElementById('fxLayer');
 
@@ -857,7 +838,7 @@ let lastPawTime = 0;
 if (!REDUCE_MOTION){
   window.addEventListener('pointermove', (e) => {
     const now = performance.now();
-    if (now - lastPawTime < 90) return; // throttle
+    if (now - lastPawTime < 90) return;
     lastPawTime = now;
     const paw = document.createElement('span');
     paw.className = 'paw-mark';
@@ -912,156 +893,90 @@ function celebrateAt(clientX, clientY){
   if (el) el.addEventListener('click', (e) => celebrateAt(e.clientX, e.clientY));
 });
 
-/* ============================================================
-   GENERATIVE KNIGHT COMPOSER
-   No source PFP images were part of this upload, so knights are
-   assembled live from the same trait pools that back the rarity
-   table below — a generative PFP page, generated for real.
-============================================================ */
-const HATS = [
-  {emoji:'🎩', name:'Top Hat'}, {emoji:'🧢', name:'Backwards Cap'},
-  {emoji:'👑', name:'Crooked Crown'}, {emoji:'🪖', name:'Rusty Helmet'},
-  {emoji:'👒', name:'Sun Hat'}, {emoji:'', name:'Bare Head'}
-];
-const SWORDS = [
-  {emoji:'⚔️', name:'Crossed Blades'}, {emoji:'🗡️', name:'Rusty Dagger'},
-  {emoji:'🔪', name:'Kitchen Knife'}, {emoji:'', name:'Unarmed'}
-];
-const SHIELDS = [ {emoji:'🛡️', name:'Trash-Lid Shield'}, {emoji:'', name:'No Shield'} ];
-const WINGS = [
-  {emoji:'🦇', name:'Bat Wings'}, {emoji:'🪽', name:'Angel Wing'},
-  {emoji:'🔥', name:'Flame Aura'}, {emoji:'', name:'Grounded'}
-];
-const GLASSES = [ {emoji:'🕶️', name:'Black Shades'}, {emoji:'👓', name:'Round Specs'}, {emoji:'', name:'Bare Eyes'} ];
-const NECKLACES = [ {emoji:'📿', name:'Prayer Beads'}, {emoji:'💎', name:'Loot Gem'}, {emoji:'', name:'Bare Neck'} ];
-const BACKGROUNDS = [
-  {name:'Toxic Green', color:'var(--mint)'}, {name:'Radioactive Yellow', color:'var(--lemon)'},
-  {name:'Riot Pink', color:'var(--bubblegum)'}, {name:'Ultraviolet', color:'var(--grape)'},
-  {name:'Deep Blue', color:'var(--sky)'}, {name:'Molten Orange', color:'var(--tangerine)'}
-];
-const TIERS = [
-  {name:'COMMON', color:'var(--tier-common)', weight:60},
-  {name:'RARE', color:'var(--tier-rare)', weight:24},
-  {name:'EPIC', color:'var(--tier-epic)', weight:12},
-  {name:'LEGENDARY', color:'var(--tier-legendary)', weight:4}
+/* KNIGHT ASSETS INTEGRATION */
+const UPLOADED_KNIGHTS = [
+  { id: '5458', file: 'assets/knight-5458.png', tier: 'COMMON', traits: ['Rusty Helmet', 'Crossed Swords', 'Shades'] },
+  { id: '5462', file: 'assets/knight-5462.png', tier: 'RARE', traits: ['Crown', 'Golden Scimitar', 'Demon Wings'] },
+  { id: '5463', file: 'assets/knight-5463.png', tier: 'EPIC', traits: ['Top Hat', 'Flamberge', 'Angel Wings'] },
+  { id: '5464', file: 'assets/knight-5464.png', tier: 'COMMON', traits: ['Backwards Cap', 'Dagger', 'Grounded'] },
+  { id: '5465', file: 'assets/knight-5465.png', tier: 'LEGENDARY', traits: ['Red Fez', 'Winged Sword', 'Halo Necklace'] },
+  { id: '5476', file: 'assets/knight-5476.png', tier: 'RARE', traits: ['Sun Hat', 'Poison Sword', 'Flame Aura'] },
+  { id: '5477', file: 'assets/knight-5477.png', tier: 'COMMON', traits: ['Navy Fedora', 'Rapier', 'Black Shades'] },
+  { id: '5508', file: 'assets/knight-5508.png', tier: 'EPIC', traits: ['Panama Hat', 'Frost Sword', 'Bat Wings'] },
+  { id: '5513', file: 'assets/knight-5513.png', tier: 'RARE', traits: ['Captain Hat', 'Broadsword', 'Gold Glasses'] },
+  { id: '5710', file: 'assets/knight-5710.png', tier: 'LEGENDARY', traits: ['Crooked Crown', 'Crescent Blade', 'Loot Gem'] }
 ];
 
-function mulberry32(seed){
-  return function(){
-    seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
-    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-function pick(pool, rng){ return pool[Math.floor(rng() * pool.length)]; }
-function pickTier(rng){
-  const total = TIERS.reduce((s,t) => s + t.weight, 0);
-  let r = rng() * total;
-  for (const t of TIERS){ if (r < t.weight) return t; r -= t.weight; }
-  return TIERS[0];
-}
-
-function buildKnight(rng){
-  return {
-    hat: pick(HATS, rng), sword: pick(SWORDS, rng), shield: pick(SHIELDS, rng),
-    wings: pick(WINGS, rng), glasses: pick(GLASSES, rng), necklace: pick(NECKLACES, rng),
-    bg: pick(BACKGROUNDS, rng), tier: pickTier(rng)
-  };
-}
-
-function knightAvatarHTML(k, size){
-  return `<div class="knight-avatar" style="background:${k.bg.color}; ${size ? `width:${size}px;height:${size}px;` : ''}">
-    ${k.wings.emoji ? `<span class="layer layer-wings">${k.wings.emoji}</span>` : ''}
-    <span class="layer layer-face">🐱</span>
-    ${k.glasses.emoji ? `<span class="layer layer-glasses">${k.glasses.emoji}</span>` : ''}
-    ${k.hat.emoji ? `<span class="layer layer-hat">${k.hat.emoji}</span>` : ''}
-    ${k.necklace.emoji ? `<span class="layer layer-necklace">${k.necklace.emoji}</span>` : ''}
-    ${k.sword.emoji ? `<span class="layer layer-weapon">${k.sword.emoji}</span>` : (k.shield.emoji ? `<span class="layer layer-weapon">${k.shield.emoji}</span>` : '')}
-  </div>`;
-}
-
-/* ---- Mascot commentary, keyed by tier ---- */
-const MASCOT_LINES = {
-  COMMON: ["just a lil guy 🐾", "certified background character", "mid but make it iconic", "he tried his best"],
-  RARE: ["ok this one's kinda fire ngl", "upgrade unlocked ✨", "not bad, not bad at all", "we're so back"],
-  EPIC: ["okay show off much?? 😤", "ate and left no crumbs", "certified banger fit", "the fit really said 'let him cook'"],
-  LEGENDARY: ["WAIT NO WAY 😭", "screenshot this immediately", "this knight pays my rent", "actual W, no notes"]
+const TIER_COLORS = {
+  COMMON: 'var(--tier-common)',
+  RARE: 'var(--tier-rare)',
+  EPIC: 'var(--tier-epic)',
+  LEGENDARY: 'var(--tier-legendary)'
 };
-function randomMascotLine(tierName){
-  const pool = MASCOT_LINES[tierName] || MASCOT_LINES.COMMON;
-  return pool[Math.floor(Math.random() * pool.length)];
-}
 
-/* ---- Hero Chaos Roller ---- */
-const knightAvatarEl = document.getElementById('knightAvatar');
+const MASCOT_LINES = {
+  COMMON: ["just a lil guy 🐾", "certified background character", "mid but make it iconic"],
+  RARE: ["ok this one's kinda fire ngl", "upgrade unlocked ✨", "we're so back"],
+  EPIC: ["okay show off much?? 😤", "ate and left no crumbs", "let him cook"],
+  LEGENDARY: ["WAIT NO WAY 😭", "screenshot this immediately", "actual W, no notes"]
+};
+
+/* HERO ROLLER */
+const knightAvatarImg = document.getElementById('knightAvatar');
 const rollerTierEl = document.getElementById('rollerTier');
 const rollerTraitsEl = document.getElementById('rollerTraits');
 const mascotSpeechEl = document.getElementById('mascotSpeech');
 const rollBtn = document.getElementById('rollBtn');
 
-function renderRoller(k){
-  knightAvatarEl.style.background = k.bg.color;
-  knightAvatarEl.innerHTML = `
-    ${k.wings.emoji ? `<span class="layer layer-wings">${k.wings.emoji}</span>` : ''}
-    <span class="layer layer-face">🐱</span>
-    ${k.glasses.emoji ? `<span class="layer layer-glasses">${k.glasses.emoji}</span>` : ''}
-    ${k.hat.emoji ? `<span class="layer layer-hat">${k.hat.emoji}</span>` : ''}
-    ${k.necklace.emoji ? `<span class="layer layer-necklace">${k.necklace.emoji}</span>` : ''}
-    ${k.sword.emoji ? `<span class="layer layer-weapon">${k.sword.emoji}</span>` : (k.shield.emoji ? `<span class="layer layer-weapon">${k.shield.emoji}</span>` : '')}
-  `;
-  rollerTierEl.textContent = k.tier.name;
-  rollerTierEl.style.background = k.tier.color;
-  rollerTraitsEl.innerHTML = [k.hat, k.sword, k.wings, k.glasses]
-    .filter(t => t.name && t.name.indexOf('Bare') === -1 && t.name !== 'Unarmed' && t.name !== 'Grounded')
-    .map(t => `<span>${t.name}</span>`).join('') || '<span>Stripped Down Fit</span>';
-  mascotSpeechEl.textContent = randomMascotLine(k.tier.name);
+let currentIdx = 0;
+function renderRoller(knight){
+  knightAvatarImg.src = knight.file;
+  rollerTierEl.textContent = knight.tier;
+  rollerTierEl.style.background = TIER_COLORS[knight.tier];
+  rollerTraitsEl.innerHTML = knight.traits.map(t => `<span>${t}</span>`).join('');
+  
+  const pool = MASCOT_LINES[knight.tier];
+  mascotSpeechEl.textContent = pool[Math.floor(Math.random() * pool.length)];
 }
 
-let rollSeed = Date.now();
 function rollKnight(clientX, clientY){
-  rollSeed += 1;
-  const rng = mulberry32(rollSeed);
-  const k = buildKnight(rng);
-  knightAvatarEl.classList.remove('rolling');
-  void knightAvatarEl.offsetWidth;
-  knightAvatarEl.classList.add('rolling');
+  currentIdx = (currentIdx + 1) % UPLOADED_KNIGHTS.length;
+  const k = UPLOADED_KNIGHTS[currentIdx];
+  knightAvatarImg.classList.remove('rolling');
+  void knightAvatarImg.offsetWidth;
+  knightAvatarImg.classList.add('rolling');
   renderRoller(k);
   if (typeof clientX === 'number') celebrateAt(clientX, clientY);
 }
 rollBtn.addEventListener('click', (e) => rollKnight(e.clientX, e.clientY));
-rollKnight();
+renderRoller(UPLOADED_KNIGHTS[0]);
 
-/* ---- About mini knights ---- */
+/* ABOUT MINI KNIGHTS */
 const aboutKnights = document.getElementById('aboutKnights');
-[101, 202, 303].forEach(seed => {
-  const k = buildKnight(mulberry32(seed));
+[1, 2, 4].forEach(idx => {
+  const k = UPLOADED_KNIGHTS[idx];
   const wrap = document.createElement('div');
   wrap.className = 'knight-stage';
-  wrap.innerHTML = knightAvatarHTML(k);
+  wrap.innerHTML = `<img class="knight-avatar-img" src="${k.file}" alt="Knight #${k.id}">`;
   aboutKnights.appendChild(wrap);
 });
 
-/* ---- Gallery (deterministic, so it looks the same on every load) ---- */
+/* GALLERY */
 const galleryGrid = document.getElementById('galleryGrid');
-for (let i = 1; i <= 10; i++){
-  const k = buildKnight(mulberry32(5000 + i * 37));
-  const id = String(5450 + i * 7).padStart(4, '0');
+UPLOADED_KNIGHTS.forEach(k => {
   const fig = document.createElement('figure');
   fig.className = 'gallery-card reveal';
   fig.innerHTML = `
-    <div class="knight-stage">${knightAvatarHTML(k)}</div>
-    <figcaption><b>#${id}</b><span style="color:${k.tier.color}">${k.tier.name}</span></figcaption>
+    <div class="knight-stage">
+      <img class="knight-avatar-img" src="${k.file}" alt="Knight #${k.id}">
+    </div>
+    <figcaption><b>#${k.id}</b><span style="color:${TIER_COLORS[k.tier]}">${k.tier}</span></figcaption>
   `;
   galleryGrid.appendChild(fig);
   io.observe(fig);
-}
+});
 
-/* ============================================================
-   RARITY DATA (sourced from the ChaosCats trait breakdown)
-============================================================ */
-const tierColor = { COMMON: 'var(--tier-common)', RARE: 'var(--tier-rare)', EPIC: 'var(--tier-epic)', LEGENDARY: 'var(--tier-legendary)' };
-
+/* RARITY DATA */
 const traitData = {
   "Sword": { meta: "19 variants · 32.7% wield nothing at all", items: [
     ["None (Bare)",3274,32.74,"COMMON"],["Sheathed Jian",584,5.84,"COMMON"],["Curved Dagger",579,5.79,"COMMON"],
@@ -1125,9 +1040,9 @@ function renderPanel(category){
     ${data.items.map(([name,count,pct,tier]) => `
       <div class="trait-row">
         <div class="trait-name">${name}</div>
-        <div class="trait-bar-track"><div class="trait-bar-fill" style="width:${Math.min(pct*2.6,100)}%; background:${tierColor[tier]};"></div></div>
+        <div class="trait-bar-track"><div class="trait-bar-fill" style="width:${Math.min(pct*2.6,100)}%; background:${TIER_COLORS[tier]};"></div></div>
         <div class="trait-pct">${pct.toFixed(2)}%</div>
-        <div class="trait-tier" style="background:${tierColor[tier]};">${tier}</div>
+        <div class="trait-tier" style="background:${TIER_COLORS[tier]};">${tier}</div>
       </div>
     `).join('')}
   `;
