@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================
+     SEO & SOCIAL META
+============================================================ -->
+<title>ChaosCats — 10,000 Chaotic Modern Knights on the Blockchain</title>
+<meta name="description" content="ChaosCats is a collection of 10,000 chaotic modern knight cats running wild on the blockchain. Rusty swords, trash-lid shields, randomized modern headwear and zero logic. Equip your chaos.">
+<meta name="keywords" content="ChaosCats, NFT, NFT collection, blockchain cats, PFP collection, mint NFT">
+<meta name="author" content="ChaosCats">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="ChaosCats — 10,000 Chaotic Modern Knights">
+<meta property="og:description" content="Modern Knights. Medieval Swag. Zero Logic. Maximum Chaos. 10,000 fully randomized knight cats, all on-chain.">
+<meta property="og:image" content="./assets/knight-5458.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChaosCats — 10,000 Chaotic Modern Knights">
+<meta name="twitter:description" content="Modern Knights. Medieval Swag. Zero Logic. Maximum Chaos.">
+<meta name="twitter:image" content="./assets/knight-5458.png">
+
+<!-- ============================================================
+     FAVICON & TOUCH ICONS — built from the uploaded ChaosCats artwork
+============================================================ -->
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="./assets/favicon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+<link rel="shortcut icon" href="./assets/favicon-32.png">
+
+<!-- Fonts: Caveat (chaotic handwritten display) + Space Grotesk (clean modern body) + Space Mono (data/stats) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================
+   0. DESIGN TOKENS
+   Palette pulled straight from the ChaosCats trait backgrounds:
+   paper (notebook base), ink (text), and four "sticker" accents
+   lifted from the PFP background colors themselves.
+========================================================== */
+:root{
+  --paper:        #F7F2E7;
+  --paper-line:   #E7DEC9;
+  --ink:          #201A2E;
+  --ink-soft:     #55506B;
+  --card:         #FFFDF7;
+
+  --chaos-pink:   #FF4E86;
+  --chaos-yellow: #FFC229;
+  --chaos-green:  #1FAE6E;
+  --chaos-purple: #7C4DFF;
+  --chaos-blue:   #2F6FED;
+  --chaos-orange: #FF7A3D;
+
+  --tier-common:    #8B8599;
+  --tier-rare:      #2F6FED;
+  --tier-epic:      #7C4DFF;
+  --tier-legendary: #E0A200;
+
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+
+  --shadow-card: 0 10px 0 rgba(32,26,46,0.9);
+  --shadow-soft: 0 18px 40px rgba(32,26,46,0.12);
+
+  --font-hand: 'Caveat', cursive;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+/* ==========================================================
+   1. RESET & BASE
+========================================================== */
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin:0;
+  background:
+    radial-gradient(circle, var(--paper-line) 1px, transparent 1px) 0 0/22px 22px,
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+ul{ margin:0; padding:0; list-style:none; }
+h1,h2,h3,h4{ margin:0; font-family: var(--font-hand); font-weight:700; }
+p{ margin:0; }
+button{ font-family: inherit; cursor:pointer; border:none; background:none; }
+
+:focus-visible{
+  outline: 3px solid var(--chaos-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior:auto !important; }
+}
+
+.wrap{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.section{ padding: 96px 0; }
+@media (max-width: 720px){ .section{ padding: 64px 0; } }
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--ink);
+  padding: 6px 14px;
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.headline{
+  font-family: var(--font-hand);
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 0.98;
+  margin: 18px 0 0;
+}
+
+.section-sub{
+  max-width: 640px;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  margin-top: 14px;
+}
+
+/* wobbly hand-drawn underline used to punch up a keyword */
+.scribble{
+  position:relative;
+  white-space: nowrap;
+}
+.scribble svg{
+  position:absolute;
+  left:-2%; right:-2%; bottom:-0.12em;
+  width:104%; height:0.3em;
+}
+
+/* sticker button */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family: var(--font-body);
+  font-weight:700;
+  font-size: 1rem;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 2.5px solid var(--ink);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn-primary{
+  background: var(--chaos-yellow);
+  color: var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+.btn-primary:hover{ transform: translate(-2px,-2px); box-shadow: 7px 7px 0 var(--ink); }
+.btn-primary:active{ transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--ink); }
+
+.btn-ghost{
+  background: transparent;
+  color: var(--ink);
+  box-shadow: 5px 5px 0 rgba(32,26,46,0.15);
+}
+.btn-ghost:hover{ transform: translate(-2px,-2px); background:#fff; }
+
+/* ==========================================================
+   2. NAVBAR
+========================================================== */
+.navbar{
+  position: sticky;
+  top:0;
+  z-index: 100;
+  background: rgba(247,242,231,0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--ink);
+}
+.nav-inner{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.brand img{
+  width: 44px; height:44px;
+  border-radius: 50%;
+  border: 2.5px solid var(--ink);
+  object-fit: cover;
+  background: var(--chaos-yellow);
+}
+.brand span{
+  font-family: var(--font-hand);
+  font-weight:700;
+  font-size: 1.7rem;
+  letter-spacing: 0.01em;
+}
+.nav-links{
+  display:flex;
+  gap: 30px;
+  font-weight:600;
+  font-size: 0.95rem;
+}
+.nav-links a{ position:relative; padding: 4px 0; }
+.nav-links a:hover{ color: var(--chaos-pink); }
+.nav-cta{ display:flex; align-items:center; gap:14px; }
+.nav-cta .btn-primary{ padding: 10px 20px; font-size: 0.92rem; }
+
+.menu-toggle{
+  display:none;
+  width: 42px; height:42px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  align-items:center;
+  justify-content:center;
+  background: #fff;
+}
+.menu-toggle span, .menu-toggle span::before, .menu-toggle span::after{
+  content:""; display:block; width:20px; height:2px; background:var(--ink); position:relative; transition: all .2s ease;
+}
+.menu-toggle span::before{ position:absolute; top:-6px; }
+.menu-toggle span::after{ position:absolute; top:6px; }
+
+@media (max-width: 860px){
+  .nav-links{
+    position: fixed; inset: 66px 0 auto 0;
+    background: var(--paper);
+    border-bottom: 2px solid var(--ink);
+    flex-direction: column;
+    gap:0;
+    padding: 8px 24px 18px;
+    transform: translateY(-120%);
+    transition: transform .25s ease;
+  }
+  .nav-links.open{ transform: translateY(0); }
+  .nav-links a{ padding: 12px 0; border-bottom: 1px dashed var(--paper-line); }
+  .menu-toggle{ display:flex; }
+  .nav-cta .btn-primary span.long{ display:none; }
+}
+
+/* ==========================================================
+   3. HERO
+========================================================== */
+.hero{
+  padding: 72px 0 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 40px;
+  align-items:center;
+}
+@media (max-width: 900px){
+  .hero-grid{ grid-template-columns: 1fr; }
+}
+.hero-tagline{
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--chaos-purple);
+  font-size: 1.15rem;
+  margin-top: 20px;
+}
+.hero-copy p.section-sub{ margin-top:16px; }
+.hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; margin-top: 32px; }
+
+.stat-strip{
+  display:flex;
+  gap: 34px;
+  flex-wrap: wrap;
+  margin-top: 46px;
+  padding-top: 26px;
+  border-top: 2px dashed var(--paper-line);
+}
+.stat-strip .stat b{
+  display:block;
+  font-family: var(--font-hand);
+  font-size: 2.1rem;
+  line-height:1;
+}
+.stat-strip .stat span{
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* hero collage of polaroid-style knight photos */
+.hero-collage{
+  position:relative;
+  height: 460px;
+}
+.polaroid{
+  position:absolute;
+  background:#fff;
+  padding: 10px 10px 34px;
+  border: 2.5px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+  width: 46%;
+}
+.polaroid img{ border-radius: 8px; aspect-ratio: 1/1; object-fit: cover; }
+.polaroid figcaption{
+  position:absolute;
+  bottom: 8px; left: 14px; right: 14px;
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+.p1{ top: 0; left: 4%; transform: rotate(-7deg); z-index:2; }
+.p2{ top: 6%; right: 2%; transform: rotate(6deg); z-index:1; width:44%;}
+.p3{ bottom: 0; left: 22%; transform: rotate(3deg); z-index:3; width: 42%;}
+.tape{
+  position:absolute; width:70px; height:26px;
+  background: rgba(255,194,41,0.85);
+  border: 1px solid rgba(32,26,46,0.25);
+  top:-12px; left: 50%; transform: translateX(-50%) rotate(-4deg);
+}
+
+@media (max-width: 900px){
+  .hero-collage{ height: 360px; margin-top: 12px; }
+}
+@media (max-width: 520px){
+  .hero-collage{ height: 300px; }
+}
+
+/* ==========================================================
+   4. ABOUT
+========================================================== */
+.about-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+@media (max-width: 860px){ .about-grid{ grid-template-columns: 1fr; } }
+.about-card{
+  background: var(--card);
+  border: 2.5px solid var(--ink);
+  border-radius: var(--radius-lg);
+  padding: 34px;
+  box-shadow: var(--shadow-card);
+}
+.about-card p{ color: var(--ink-soft); margin-top:14px; font-size: 1.02rem; }
+.about-card p + p{ margin-top:12px; }
+.about-quote{
+  font-family: var(--font-hand);
+  font-size: 1.9rem;
+  color: var(--chaos-pink);
+  margin-top: 18px;
+  line-height:1.15;
+}
+.about-visual{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.about-visual img{
+  border-radius: var(--radius-md);
+  border: 2.5px solid var(--ink);
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.about-visual div:nth-child(2){ margin-top: 28px; }
+.about-visual div:nth-child(4){ margin-top: -28px; }
+
+/* ==========================================================
+   5. FEATURE HIGHLIGHTS
+========================================================== */
+.feature-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 46px;
+}
+@media (max-width: 980px){ .feature-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px){ .feature-grid{ grid-template-columns: 1fr; } }
+
+.feature-card{
+  background: var(--card);
+  border: 2.5px solid var(--ink);
+  border-radius: var(--radius-md);
+  padding: 26px 22px;
+  box-shadow: var(--shadow-card);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.feature-card:hover{ transform: translateY(-6px); box-shadow: 0 16px 0 var(--ink); }
+.feature-icon{
+  width: 52px; height:52px;
+  border-radius: 50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size: 1.5rem;
+  border: 2px solid var(--ink);
+  margin-bottom: 16px;
+}
+.feature-card h3{ font-size: 1.5rem; }
+.feature-card p{ color: var(--ink-soft); margin-top:8px; font-size: 0.95rem; }
+
+/* ==========================================================
+   6. DARK PANEL (used for gallery + rarity — makes the
+      candy-colored PFP backgrounds pop like cards under glass)
+========================================================== */
+.panel-dark{
+  background: var(--ink);
+  color: #F7F2E7;
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+}
+.panel-dark .eyebrow{ background: transparent; color:#fff; border-color:#fff; box-shadow:3px 3px 0 rgba(255,255,255,0.35); }
+.panel-dark .section-sub{ color: #BDB8CC; }
+.panel-dark .headline{ color:#fff; }
+
+/* ==========================================================
+   7. GALLERY
+========================================================== */
+.gallery-grid{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+  margin-top: 50px;
+}
+@media (max-width: 1020px){ .gallery-grid{ grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px){ .gallery-grid{ grid-template-columns: repeat(2, 1fr); gap:14px;} }
+
+.gallery-card{
+  background:#fff;
+  border-radius: var(--radius-md);
+  border: 2.5px solid var(--ink);
+  padding: 8px 8px 14px;
+  transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.55);
+}
+.gallery-card:nth-child(odd){ transform: rotate(-2.2deg); }
+.gallery-card:nth-child(even){ transform: rotate(2deg); }
+.gallery-card:hover{ transform: rotate(0deg) translateY(-6px) scale(1.03); box-shadow: 8px 10px 0 rgba(0,0,0,0.6); z-index:5; position:relative; }
+.gallery-card img{
+  border-radius: 8px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.gallery-card figcaption{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink);
+  padding: 8px 4px 0;
+}
+.gallery-card figcaption b{ font-family: var(--font-hand); font-size:1.05rem; }
+.gallery-note{
+  text-align:center;
+  margin-top: 30px;
+  color: #BDB8CC;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================
+   8. RARITY BREAKDOWN
+========================================================== */
+.tier-legend{
+  display:flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+.tier-chip{
+  display:flex; align-items:center; gap:8px;
+  font-family: var(--font-mono); font-size: 0.75rem;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 999px;
+  padding: 7px 14px;
+}
+.tier-dot{ width:10px; height:10px; border-radius:50%; }
+
+.tabs{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 44px;
+}
+.tab-btn{
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,0.3);
+  color: #DCD8E8;
+  background: transparent;
+  transition: all .15s ease;
+}
+.tab-btn:hover{ border-color:#fff; color:#fff; }
+.tab-btn.active{
+  background: var(--chaos-yellow);
+  border-color: var(--chaos-yellow);
+  color: var(--ink);
+}
+
+.trait-panel{
+  margin-top: 30px;
+  background: #2A2340;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+}
+.trait-panel-head{
+  display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;
+  margin-bottom: 22px;
+}
+.trait-panel-head h3{ font-size: 1.7rem; color:#fff; }
+.trait-panel-head span{ font-family: var(--font-mono); font-size:0.78rem; color:#9C96B4; }
+
+.trait-row{
+  display:grid;
+  grid-template-columns: 190px 1fr 70px 100px;
+  align-items:center;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.1);
+}
+.trait-row:last-child{ border-bottom:none; }
+.trait-name{ font-size: 0.9rem; font-weight:600; color:#F1EEFA; }
+.trait-bar-track{
+  height: 10px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  overflow:hidden;
+}
+.trait-bar-fill{ height:100%; border-radius:999px; }
+.trait-pct{ font-family: var(--font-mono); font-size:0.82rem; color:#DCD8E8; text-align:right; }
+.trait-tier{
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-align:center;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight:700;
+  color:#171325;
+}
+
+@media (max-width: 720px){
+  .trait-row{ grid-template-columns: 1fr; gap:6px; text-align:left; }
+  .trait-pct{ text-align:left; }
+  .trait-tier{ width:fit-content; }
+}
+
+/* ==========================================================
+   9. FINAL CTA
+========================================================== */
+.cta-band{
+  background: var(--chaos-pink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+  text-align:center;
+  padding: 90px 24px;
+  position:relative;
+  overflow:hidden;
+}
+.cta-band h2{
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  color:#fff;
+}
+.cta-band p{ color: rgba(255,255,255,0.9); margin-top:14px; font-size:1.05rem; }
+.cta-band .hero-ctas{ justify-content:center; margin-top:30px; }
+.cta-band .btn-ghost{ background:#fff; }
+
+/* ==========================================================
+   10. FOOTER
+========================================================== */
+footer{
+  background: var(--ink);
+  color: #C9C4DA;
+  padding: 60px 0 26px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 780px){ .footer-grid{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px){ .footer-grid{ grid-template-columns: 1fr; } }
+
+.footer-brand{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.footer-brand img{ width:40px; height:40px; border-radius:50%; border:2px solid #fff; }
+.footer-brand span{ font-family: var(--font-hand); font-size:1.6rem; color:#fff; }
+footer p.tag{ font-size:0.9rem; max-width:280px; color:#9C96B4; }
+
+footer h4{
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 16px;
+}
+footer ul li{ margin-bottom:10px; font-size:0.92rem; }
+footer ul li a:hover{ color: var(--chaos-yellow); }
+
+.social-row{ display:flex; gap:12px; margin-top:6px; }
+.social-row a{
+  width:38px; height:38px;
+  border-radius:50%;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  display:flex; align-items:center; justify-content:center;
+  transition: all .15s ease;
+}
+.social-row a:hover{ background:#fff; color:var(--ink); border-color:#fff; }
+
+.footer-bottom{
+  margin-top: 50px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  font-size: 0.78rem;
+  color: #7A7490;
+}
+
+/* ==========================================================
+   11. SCROLL REVEAL
+========================================================== */
+.reveal{ opacity:0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in{ opacity:1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <img src="./assets/apple-touch-icon.png" alt="ChaosCats logo">
+      <span>ChaosCats</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#rarity">Rarity</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="#mint" class="btn btn-primary"><span class="long">Mint&nbsp;</span>Now</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<main id="top">
+<section class="hero wrap">
+  <div class="hero-grid">
+    <div class="hero-copy reveal">
+      <span class="eyebrow">🐾 10,000 Chaotic Modern Knights</span>
+      <h1 class="headline">
+        Modern Knights.<br>
+        <span class="scribble">Medieval Swag.
+          <svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M2 12 Q40 2 80 12 T160 10 T240 14 T298 8" stroke="#FF4E86" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
+        </span><br>
+        Zero Logic.
+      </h1>
+      <p class="hero-tagline">Maximum Chaos. Built for those who trade hard and purr harder.</p>
+      <p class="section-sub">A collection of chaotic, modern knights running wild on the blockchain. Armed with rusty swords, makeshift trash-lid shields, and a stack of modern bucket hats with shades — they don't care about strategy. Only loot, adventure, and chaos.</p>
+
+      <div class="hero-ctas">
+        <a href="#mint" class="btn btn-primary">⚔️ Mint Your Knight</a>
+        <a href="#rarity" class="btn btn-ghost">View Rarity Breakdown</a>
+      </div>
+
+      <div class="stat-strip">
+        <div class="stat"><b>10,000</b><span>Total Supply</span></div>
+        <div class="stat"><b>7</b><span>Trait Categories</span></div>
+        <div class="stat"><b>100%</b><span>On-Chain</span></div>
+        <div class="stat"><b>0.79%</b><span>Rarest Trait</span></div>
+      </div>
+    </div>
+
+    <div class="hero-collage reveal">
+      <figure class="polaroid p1">
+        <div class="tape"></div>
+        <img src="./assets/knight-5476.png" alt="ChaosCats knight wearing a fedora with a sword, golden meadow background">
+        <figcaption>#5476</figcaption>
+      </figure>
+      <figure class="polaroid p2">
+        <img src="./assets/knight-5458.png" alt="ChaosCats knight with angel wings and a purple katana, yellow background">
+        <figcaption>#5458</figcaption>
+      </figure>
+      <figure class="polaroid p3">
+        <img src="./assets/knight-5513.png" alt="ChaosCats knight with demon wings and a bronze shield, blue background">
+        <figcaption>#5513</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section id="about" class="section wrap">
+  <div class="about-grid">
+    <div class="about-card reveal">
+      <span class="eyebrow">📜 The Lore</span>
+      <h2 class="headline" style="font-size: clamp(2rem, 4vw, 2.8rem); margin-top:14px;">What is ChaosCats?</h2>
+      <p>These are not your typical armored crusaders. Every knight is fully randomized — rusty blades sheathed or drawn, makeshift shields slung on backwards, and a modern bucket hat thrown carelessly over classic medieval gear.</p>
+      <p>No two knights follow the same logic, and that's exactly the point. Stacked traits across 7 categories, all generated and stored on-chain.</p>
+      <p class="about-quote">"Equip your chaos. Join the chaotic modern order."</p>
+    </div>
+
+    <div class="about-visual reveal">
+      <div><img src="./assets/knight-5464.png" alt="ChaosCats knight wearing a chef hat and rapier, green background"></div>
+      <div><img src="./assets/knight-5462.png" alt="ChaosCats knight wearing a bucket hat and tortoiseshell glasses, orange background"></div>
+      <div><img src="./assets/knight-5710.png" alt="ChaosCats knight wearing a top hat with a spiked mace, blue background"></div>
+      <div><img src="./assets/knight-5465.png" alt="ChaosCats knight with a shield and katana, purple background"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURE HIGHLIGHTS
+============================================================ -->
+<section id="features" class="section wrap">
+  <span class="eyebrow">🎲 Collection Highlights</span>
+  <h2 class="headline" style="font-size: clamp(2.2rem, 4.5vw, 3.2rem);">Loot. Adventure. Chaos.</h2>
+  <p class="section-sub">Everything about a knight is rolled at random — that's what makes the order chaotic.</p>
+
+  <div class="feature-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon" style="background:var(--chaos-yellow);">🎩</div>
+      <h3>Randomized Headwear</h3>
+      <p>Modern-day hats & caps thrown on over classic medieval gear — no logic required. 21 hat variants in the pool.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon" style="background:var(--chaos-pink);">⚔️</div>
+      <h3>Rusty Blades & Shields</h3>
+      <p>18 swords and 16 shields, from sheathed jians to trash-lid-tier bronze rounds.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon" style="background:var(--chaos-green);">🕶️</div>
+      <h3>Chaotic Accessories</h3>
+      <p>Sunglasses, wings, necklaces — stacked traits across 7 categories, all stored fully on-chain.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon" style="background:var(--chaos-blue);">🛡️</div>
+      <h3>Built For Warriors</h3>
+      <p>Made for those who trade hard and purr harder. Zero strategy. Maximum vibes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALLERY — 10 image showcase
+============================================================ -->
+<section id="gallery" class="panel-dark">
+  <div class="section wrap">
+    <span class="eyebrow">🖼️ Meet The Order</span>
+    <h2 class="headline" style="font-size: clamp(2.2rem, 4.5vw, 3.2rem);">A Few Knights of the Order</h2>
+    <p class="section-sub">Ten knights, ten different rolls of the chaos dice. Every trait combination is generated on mint.</p>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- gallery items injected below -->
+      <figure class="gallery-card reveal"><img src="./assets/knight-5458.png" alt="ChaosCats knight #5458 with angel wings and purple katana"><figcaption><b>#5458</b><span>LEGENDARY</span></figcaption></figure>
+      <figure class="gallery-card reveal"><img src="./assets/knight-5462.png" alt="ChaosCats knight #5462 with bucket hat and tortoiseshell glasses"><figcaption><b>#5462</b><span>COMMON</span></figcaption></figure>
+      <figure class="gallery-card reveal"><img src="./assets/knight-5463.png" alt="ChaosCats knight #5463 with bronze wings and dagger"><figcaption><b>#5463</b><span>RARE</span></figcaption></figure>
+      <figure class="gallery-card reveal"><img src="./assets/knight-5464.png" alt="ChaosCats knight #5464 with chef hat and rapier"><figcaption><b>#5464</b><span>EPIC</span></figcaption></figure>
+      <figure class="gallery-card reveal"><img src="./assets/knight-5465.png" alt="ChaosCats knight #5465 with shield and katana"><figcaption><b>#5465</b><span>RARE</span></figcaption></figure>
+      <figure class="gallery-card reveal"><img src="./assets/knight-5476.png" alt="ChaosCats knight #5476 with fedora and gem necklace"><figcaption><b>#5476</b><span>EPIC</span></figcaption></figure>
+      <figure class="gallery-card reveal"><img src="./assets/knight-5477.png" alt="ChaosCats knight #5477 with chef hat and necklace"><figcaption><b>#5477</b><span>RARE</span></figcaption></figure>
+      <figure class="gallery-card reveal"><img src="./assets/knight-5508.png" alt="ChaosCats knight #5508 with dragon wings and round shield"><figcaption><b>#5508</b><span>LEGENDARY</span></figcaption></figure>
+      <figure class="gallery-card reveal"><img src="./assets/knight-5513.png" alt="ChaosCats knight #5513 with demon wings and bronze shield"><figcaption><b>#5513</b><span>LEGENDARY</span></figcaption></figure>
+      <figure class="gallery-card reveal"><img src="./assets/knight-5710.png" alt="ChaosCats knight #5710 with top hat and spiked mace"><figcaption><b>#5710</b><span>EPIC</span></figcaption></figure>
+    </div>
+    <p class="gallery-note">SHOWING 10 OF 10,000 KNIGHTS · FULL COLLECTION REVEALED AT MINT</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     RARITY BREAKDOWN
+============================================================ -->
+<section id="rarity" class="panel-dark" style="border-top:none;">
+  <div class="section wrap" style="padding-top:0;">
+    <span class="eyebrow">📊 Rarity Breakdown</span>
+    <h2 class="headline" style="font-size: clamp(2.2rem, 4.5vw, 3.2rem);">Know Your Odds</h2>
+    <p class="section-sub">Full on-chain trait distribution across all 7 categories. Lower % = rarer knight.</p>
+
+    <div class="tier-legend">
+      <span class="tier-chip"><span class="tier-dot" style="background:var(--tier-common)"></span>Common (4%+)</span>
+      <span class="tier-chip"><span class="tier-dot" style="background:var(--tier-rare)"></span>Rare (2–4%)</span>
+      <span class="tier-chip"><span class="tier-dot" style="background:var(--tier-epic)"></span>Epic (1–2%)</span>
+      <span class="tier-chip"><span class="tier-dot" style="background:var(--tier-legendary)"></span>Legendary (&lt;1%)</span>
+    </div>
+
+    <div class="tabs" id="traitTabs"></div>
+    <div class="trait-panel" id="traitPanel"></div>
+  </div>
+</section>
+</main>
+
+<!-- ============================================================
+     FINAL CTA
+============================================================ -->
+<section id="mint" class="cta-band">
+  <div class="wrap" style="padding:0;">
+    <h2 class="headline">Equip your chaos.</h2>
+    <p>Join the chaotic modern order. 10,000 knights. Zero logic. Maximum chaos.</p>
+    <div class="hero-ctas">
+      <a href="#top" class="btn btn-ghost">⚔️ Mint Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="./assets/apple-touch-icon.png" alt="ChaosCats logo">
+          <span>ChaosCats</span>
+        </div>
+        <p class="tag">10,000 chaotic modern knights running wild on the blockchain. Modern Knights. Medieval Swag. Zero Logic. Maximum Chaos.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Twitter / X">𝕏</a>
+          <a href="#" aria-label="Discord">◈</a>
+          <a href="#" aria-label="OpenSea">🌊</a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#rarity">Rarity</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Collection</h4>
+        <ul>
+          <li><a href="#">Contract Address</a></li>
+          <li><a href="#">OpenSea</a></li>
+          <li><a href="#">Whitepaper</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <ul>
+          <li><a href="#">Discord</a></li>
+          <li><a href="#">Twitter / X</a></li>
+          <li><a href="#">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ChaosCats. All chaos reserved.</span>
+      <span>Not financial advice. NFTs are volatile digital assets.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JS — nav toggle, scroll reveal, rarity tabs
+============================================================ -->
+<script>
+// ---- Mobile nav toggle ----
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+menuToggle.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', isOpen);
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// ---- Scroll reveal ----
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+revealEls.forEach(el => io.observe(el));
+
+// ---- Rarity data (sourced from the ChaosCats trait breakdown) ----
+const tierColor = { COMMON: 'var(--tier-common)', RARE: 'var(--tier-rare)', EPIC: 'var(--tier-epic)', LEGENDARY: 'var(--tier-legendary)' };
+
+const traitData = {
+  "Sword": { meta: "19 variants · 32.7% wield nothing at all", items: [
+    ["None (Bare)",3274,32.74,"COMMON"],["Sheathed Jian",584,5.84,"COMMON"],["Curved Dagger",579,5.79,"COMMON"],
+    ["Black Katana",569,5.69,"COMMON"],["Fencing Rapier",564,5.64,"COMMON"],["Broadsword",558,5.58,"COMMON"],
+    ["Black Rapier",550,5.50,"COMMON"],["Silver Longsword",530,5.30,"COMMON"],["Golden Saber Sheathed",528,5.28,"COMMON"],
+    ["Engraved Broadsword",319,3.19,"RARE"],["Poison Dark Sword",310,3.10,"RARE"],["Frost Crystal Sword",304,3.04,"RARE"],
+    ["Demon Claw Sword",288,2.88,"RARE"],["Golden Scimitar",284,2.84,"RARE"],["Ice Crystal Sword",279,2.79,"RARE"],
+    ["Flamberge Sword",126,1.26,"EPIC"],["Flame Sword",125,1.25,"EPIC"],["Silver Crescent Blade",117,1.17,"EPIC"],
+    ["Golden Winged Sword",112,1.12,"EPIC"]
+  ]},
+  "Wings": { meta: "10 variants · 73.1% stay grounded", items: [
+    ["None (Bare)",7312,73.12,"COMMON"],["Bat Wings",493,4.93,"COMMON"],["Butterfly Wings",461,4.61,"COMMON"],
+    ["Leaf Wings",453,4.53,"COMMON"],["Raven Wings",439,4.39,"COMMON"],["Ice Wings",242,2.42,"RARE"],
+    ["Fire Wings",221,2.21,"RARE"],["Eagle Wings",217,2.17,"RARE"],["Demon Wings",83,0.83,"LEGENDARY"],
+    ["Angel Wings",79,0.79,"LEGENDARY"]
+  ]},
+  "Glasses": { meta: "16 variants · 56.8% go bare-eyed", items: [
+    ["None (Bare)",5684,56.84,"COMMON"],["Blue Rectangle Sunglasses",429,4.29,"COMMON"],["Black Square Glasses",408,4.08,"COMMON"],
+    ["Black Oval Sunglasses",399,3.99,"RARE"],["Clear Round Glasses",398,3.98,"RARE"],["Black Square Sunglasses",394,3.94,"RARE"],
+    ["Browline Glasses",383,3.83,"RARE"],["Black Round Sunglasses",382,3.82,"RARE"],["Tortoiseshell Glasses",240,2.40,"RARE"],
+    ["Tortoiseshell Cateye Sunglasses",239,2.39,"RARE"],["Green Hexagon Glasses",233,2.33,"RARE"],["Round Gold Glasses",232,2.32,"RARE"],
+    ["Gray Aviator Sunglasses",223,2.23,"RARE"],["Gold Aviator Sunglasses",125,1.25,"EPIC"],["Gold Round Sunglasses",122,1.22,"EPIC"],
+    ["Gold Wire Glasses",109,1.09,"EPIC"]
+  ]},
+  "Shield": { meta: "17 variants · 74.1% carry no protection", items: [
+    ["None (Bare)",7412,74.12,"COMMON"],["Wooden Raven Shield",268,2.68,"RARE"],["Wooden Cross Shield",266,2.66,"RARE"],
+    ["Chevron Shield",265,2.65,"RARE"],["Iron Wolf Shield",243,2.43,"RARE"],["Steel Round Shield",234,2.34,"RARE"],
+    ["Bronze Round Shield",225,2.25,"RARE"],["Lion Crest Shield",137,1.37,"EPIC"],["Roman Legion Shield",135,1.35,"EPIC"],
+    ["Griffin Shield",134,1.34,"EPIC"],["Lion Head Shield",125,1.25,"EPIC"],["Rune Shield",116,1.16,"EPIC"],
+    ["Owl Stone Shield",116,1.16,"EPIC"],["Kraken Shield",109,1.09,"EPIC"],["Phoenix Shield",65,0.65,"LEGENDARY"],
+    ["Wolf Head Shield",51,0.51,"LEGENDARY"],["Tree Of Life Shield",50,0.50,"LEGENDARY"],["Dragon Shield",49,0.49,"LEGENDARY"]
+  ]},
+  "Hat": { meta: "21 variants · top 10 rarest shown", items: [
+    ["Red Fez",79,0.79,"LEGENDARY"],["Top Hat",90,0.90,"LEGENDARY"],["Panama Hat",93,0.93,"LEGENDARY"],
+    ["Sailor Captain Hat",100,1.00,"EPIC"],["Navy Fedora",205,2.05,"RARE"],["Black Derby Hat",206,2.06,"RARE"],
+    ["Brown Fedora",218,2.18,"RARE"],["Navy Newsboy Cap",219,2.19,"RARE"],["Gray Fedora",228,2.28,"RARE"],
+    ["Navy Beret",229,2.29,"RARE"]
+  ]},
+  "Necklace": { meta: "17 variants · top 8 rarest shown", items: [
+    ["Gold Diamond Halo Necklace",70,0.70,"LEGENDARY"],["Gold Trumpet Angel Necklace",78,0.78,"LEGENDARY"],
+    ["Silver Angel Purple Gem Necklace",80,0.80,"LEGENDARY"],["Rose Gold Angel Necklace",82,0.82,"LEGENDARY"],
+    ["Gold Malachite Necklace",176,1.76,"EPIC"],["Gold Angel Star Necklace",177,1.77,"EPIC"],
+    ["Silver Angel Gem Necklace",177,1.77,"EPIC"],["Gold Angel Wings Necklace",182,1.82,"EPIC"]
+  ]},
+  "Background": { meta: "20 variants · top 6 rarest shown", items: [
+    ["Rocky Coast",248,2.48,"RARE"],["Red Orange Gradient",249,2.49,"RARE"],["Forest Path",254,2.54,"RARE"],
+    ["Golden Meadow",257,2.57,"RARE"],["Coral",260,2.60,"RARE"],["Forest River",266,2.66,"RARE"]
+  ]}
+};
+
+const tabsEl = document.getElementById('traitTabs');
+const panelEl = document.getElementById('traitPanel');
+
+function renderPanel(category){
+  const data = traitData[category];
+  panelEl.innerHTML = `
+    <div class="trait-panel-head">
+      <h3>${category}</h3>
+      <span>${data.meta}</span>
+    </div>
+    ${data.items.map(([name,count,pct,tier]) => `
+      <div class="trait-row">
+        <div class="trait-name">${name}</div>
+        <div class="trait-bar-track"><div class="trait-bar-fill" style="width:${Math.min(pct*2.6,100)}%; background:${tierColor[tier]};"></div></div>
+        <div class="trait-pct">${pct.toFixed(2)}%</div>
+        <div class="trait-tier" style="background:${tierColor[tier]};">${tier}</div>
+      </div>
+    `).join('')}
+  `;
+}
+
+Object.keys(traitData).forEach((cat, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'tab-btn' + (i === 0 ? ' active' : '');
+  btn.textContent = cat;
+  btn.addEventListener('click', () => {
+    tabsEl.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderPanel(cat);
+  });
+  tabsEl.appendChild(btn);
+});
+renderPanel(Object.keys(traitData)[0]);
+</script>
+</body>
+</html>
