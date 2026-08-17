@@ -515,6 +515,84 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
 }
 
 /* ==========================================================
+   9b. WHITELIST RITES
+========================================================== */
+.wl-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 44px; }
+@media (max-width: 780px){ .wl-grid{ grid-template-columns: 1fr; } }
+
+.wl-card, .wl-present{
+  background: var(--card);
+  border: var(--ink-border-thick);
+  border-radius: var(--radius-lg);
+  padding: clamp(20px,3vw,28px);
+  box-shadow: var(--shadow-sticker-lg);
+  position: relative;
+  transition: opacity .2s ease;
+}
+.wl-grid .wl-card:nth-child(1){ transform: rotate(-1.1deg); }
+.wl-grid .wl-card:nth-child(2){ transform: rotate(1.1deg); }
+.wl-present{ margin-top: 28px; transform: rotate(-0.4deg); }
+
+.wl-card-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom: 10px; }
+.wl-num{
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--lemon); border: 2.5px solid var(--ink);
+  display:flex; align-items:center; justify-content:center;
+  font-family: var(--font-display); font-weight:800; font-size:1rem;
+  box-shadow: 2px 3px 0 var(--ink); flex-shrink:0;
+}
+.wl-status{
+  font-family: var(--font-mono); font-size: 0.66rem; font-weight:700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 999px; border: 2px solid var(--ink);
+  background: #EFEAF7; color: var(--ink-soft);
+  transition: all .2s ease;
+}
+.wl-status.sealed{ background: var(--mint); color: var(--ink); }
+
+.wl-card h3{ font-size: 1.18rem; margin-top: 2px; }
+.wl-card > p{ color: var(--ink-soft); font-weight:700; font-size: 0.9rem; margin-top: 8px; }
+.wl-card .btn{ margin-top: 16px; width: 100%; font-size: 0.92rem; padding: 12px 18px; }
+
+.wl-check{
+  display:flex; align-items:center; gap: 10px; margin-top: 14px;
+  font-weight: 700; font-size: 0.86rem; cursor: pointer; color: var(--ink);
+}
+.wl-check input{ width: 20px; height:20px; accent-color: var(--mint); cursor: pointer; flex-shrink:0; }
+.wl-check input:disabled{ cursor: not-allowed; }
+.wl-check input:disabled + span{ color: var(--ink-soft); opacity: .65; }
+
+.wl-card.rite-sealed{ background: linear-gradient(180deg,#fff, #F4FFFA); }
+
+.wl-locked-note{
+  margin-top: 16px;
+  border: 2.5px dashed rgba(32,21,48,0.28);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align:center;
+  color: var(--ink-soft);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+.wl-form{ margin-top: 18px; display:flex; flex-direction:column; gap: 16px; max-width: 440px; }
+.wl-form label{
+  font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em;
+  color: var(--ink-soft); display:flex; flex-direction:column; gap: 7px;
+}
+.wl-form input{
+  font-family: var(--font-body); font-weight: 700; font-size: 1rem;
+  padding: 12px 15px; border: 2.5px solid var(--ink); border-radius: 12px;
+  background: #fff; color: var(--ink);
+}
+.wl-form input:focus{ outline: 3px solid var(--sky); outline-offset: 2px; }
+.wl-form .btn{ margin-top: 4px; align-self:flex-start; }
+.wl-note{ font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-soft); min-height: 1.1em; }
+.wl-note.error{ color: var(--bubblegum); font-weight: 700; }
+.wl-success{
+  margin-top: 18px; background: var(--mint); border: 2.5px solid var(--ink); border-radius: var(--radius-md);
+  padding: 20px; font-weight: 800; text-align:center;
+}
+
+/* ==========================================================
    10. FINAL CTA
 ========================================================== */
 .cta-band{ background: var(--bubblegum); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); text-align:center; padding: clamp(50px,8vw,90px) 20px; position:relative; overflow:hidden; }
@@ -613,6 +691,7 @@ footer ul li a:hover{ color: var(--lemon); }
       <a href="#features">Features</a>
       <a href="#gallery">Gallery</a>
       <a href="#rarity">Rarity</a>
+      <a href="#whitelist">Whitelist</a>
     </nav>
 
     <div class="nav-cta">
@@ -640,7 +719,7 @@ footer ul li a:hover{ color: var(--lemon); }
 
       <div class="hero-ctas">
         <a href="https://opensea.io/collection/chaoscats" class="btn btn-primary" id="heroMintBtn">⚔️ Mint Your Knight</a>
-        <a href="#rarity" class="btn btn-ghost">👀 View Rarity Odds</a>
+        <a href="#whitelist" class="btn btn-ghost">📝 Join Whitelist</a>
       </div>
 
       <div class="stat-strip">
@@ -751,6 +830,75 @@ footer ul li a:hover{ color: var(--lemon); }
     <div class="trait-panel" id="traitPanel"></div>
   </div>
 </section>
+
+<!-- WHITELIST -->
+<section id="whitelist" class="section wrap">
+  <span class="sticker-tag">📝 Whitelist Rites</span>
+  <h2 class="headline" style="font-size: clamp(1.9rem, 5vw, 3rem);">Prove You're Certified <span class="marker">Unhinged.
+    <svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M2 12 Q40 2 80 12 T160 10 T240 14 T298 8" stroke="#FF3E9A" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
+  </span></h2>
+  <p class="section-sub">Complete both quests below, seal them with a check, then present your name & wallet. No essays, no summoning 2 friends — just vibes.</p>
+
+  <div class="wl-grid">
+    <!-- RITE 1 -->
+    <div class="wl-card reveal" id="riteCard1">
+      <div class="wl-card-head">
+        <span class="wl-num">1</span>
+        <span class="wl-status" id="rite1Status">LOCKED</span>
+      </div>
+      <h3>Swear Fealty on X</h3>
+      <p>Follow our page, then come back and check the box below.</p>
+      <a href="https://x.com/ChaosCats_" target="_blank" rel="noopener" class="btn btn-primary" id="rite1Link">🐾 Follow @ChaosCats_</a>
+      <label class="wl-check">
+        <input type="checkbox" id="rite1Check" disabled>
+        <span>I have followed @ChaosCats_</span>
+      </label>
+    </div>
+
+    <!-- RITE 2 -->
+    <div class="wl-card reveal" id="riteCard2">
+      <div class="wl-card-head">
+        <span class="wl-num">2</span>
+        <span class="wl-status" id="rite2Status">LOCKED</span>
+      </div>
+      <h3>Spread the Chaos</h3>
+      <p>Like & repost our pinned post, then come back and check the box below.</p>
+      <a href="https://x.com/ChaosCats_" target="_blank" rel="noopener" class="btn btn-primary" id="rite2Link">💥 Like & Repost</a>
+      <label class="wl-check">
+        <input type="checkbox" id="rite2Check" disabled>
+        <span>I have liked & reposted</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- PRESENT THYSELF -->
+  <div class="wl-present reveal" id="presentCard">
+    <div class="wl-card-head">
+      <span class="wl-num">🎉</span>
+      <span class="wl-status" id="presentStatus">FINAL STEP</span>
+    </div>
+    <h3>Present Thyself</h3>
+
+    <div class="wl-locked-note" id="presentLocked">
+      <p>🔒 Complete both quests above to unlock the submission form.</p>
+    </div>
+
+    <form id="wlForm" class="wl-form" hidden>
+      <label>Name / X Handle
+        <input type="text" id="wlName" placeholder="e.g. Sir Meowington" required maxlength="80">
+      </label>
+      <label>Wallet Address
+        <input type="text" id="wlWallet" placeholder="0x..." required pattern="^0x[a-fA-F0-9]{40}$" maxlength="42">
+      </label>
+      <button type="submit" class="btn btn-primary" id="wlSubmitBtn">⚔️ Submit for Whitelist</button>
+      <p class="wl-note" id="wlNote"></p>
+    </form>
+
+    <div class="wl-success" id="wlSuccess" hidden>
+      <p>🎉 You're in, <b id="successName"></b>! Keep an eye on your DMs / announcements.</p>
+    </div>
+  </div>
+</section>
 </main>
 
 <!-- FINAL CTA -->
@@ -786,6 +934,7 @@ footer ul li a:hover{ color: var(--lemon); }
           <li><a href="#features">Features</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#rarity">Rarity</a></li>
+          <li><a href="#whitelist">Whitelist</a></li>
         </ul>
       </div>
       <div>
@@ -1060,6 +1209,128 @@ Object.keys(traitData).forEach((cat, i) => {
   tabsEl.appendChild(btn);
 });
 renderPanel(Object.keys(traitData)[0]);
+
+/* ==========================================================
+   WHITELIST RITES — 2-step quest flow + Google Sheet submit
+========================================================== */
+const WL_CONFIG = {
+  // 1) Deploy the included Apps Script as a Web App (Execute as: Me, Access: Anyone).
+  // 2) Paste the deployment URL below, replacing the placeholder.
+  SHEET_WEBHOOK_URL: 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE'
+};
+
+const riteCard1   = document.getElementById('riteCard1');
+const rite1Link   = document.getElementById('rite1Link');
+const rite1Check  = document.getElementById('rite1Check');
+const rite1Status = document.getElementById('rite1Status');
+
+const riteCard2   = document.getElementById('riteCard2');
+const rite2Link   = document.getElementById('rite2Link');
+const rite2Check  = document.getElementById('rite2Check');
+const rite2Status = document.getElementById('rite2Status');
+
+const presentLocked = document.getElementById('presentLocked');
+const wlForm         = document.getElementById('wlForm');
+const wlNote          = document.getElementById('wlNote');
+const wlSubmitBtn     = document.getElementById('wlSubmitBtn');
+const wlSuccess       = document.getElementById('wlSuccess');
+const successNameEl   = document.getElementById('successName');
+
+function armRite(link, check){
+  // Visiting the link unlocks the "I did it" checkbox (user still has to self-certify by checking it)
+  link.addEventListener('click', () => { check.disabled = false; }, { once: false });
+}
+armRite(rite1Link, rite1Check);
+armRite(rite2Link, rite2Check);
+
+function wireRite(check, status, card){
+  check.addEventListener('change', () => {
+    if (check.checked){
+      status.textContent = 'SEALED ✓';
+      status.classList.add('sealed');
+      card.classList.add('rite-sealed');
+    } else {
+      status.textContent = 'LOCKED';
+      status.classList.remove('sealed');
+      card.classList.remove('rite-sealed');
+    }
+    refreshWlGate();
+  });
+}
+wireRite(rite1Check, rite1Status, riteCard1);
+wireRite(rite2Check, rite2Status, riteCard2);
+
+function refreshWlGate(){
+  const bothSealed = rite1Check.checked && rite2Check.checked;
+  presentLocked.hidden = bothSealed;
+  wlForm.hidden = !bothSealed;
+}
+
+const WALLET_RE = /^0x[a-fA-F0-9]{40}$/;
+
+wlForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('wlName').value.trim();
+  const wallet = document.getElementById('wlWallet').value.trim();
+
+  wlNote.textContent = '';
+  wlNote.classList.remove('error');
+
+  if (!name){
+    wlNote.textContent = 'Enter a name or X handle first.';
+    wlNote.classList.add('error');
+    return;
+  }
+  if (!WALLET_RE.test(wallet)){
+    wlNote.textContent = 'That wallet address doesn\'t look right — should be 0x followed by 40 characters.';
+    wlNote.classList.add('error');
+    return;
+  }
+
+  const payload = {
+    name,
+    wallet,
+    followed: rite1Check.checked,
+    reposted: rite2Check.checked,
+    timestamp: new Date().toISOString(),
+    source: 'chaoscats.github.io'
+  };
+
+  wlSubmitBtn.disabled = true;
+  wlSubmitBtn.textContent = 'Submitting…';
+
+  try {
+    if (WL_CONFIG.SHEET_WEBHOOK_URL.includes('PASTE_YOUR')){
+      throw new Error('webhook-not-configured');
+    }
+
+    await fetch(WL_CONFIG.SHEET_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // keeps it a "simple request" -> no CORS preflight
+      body: JSON.stringify(payload)
+    });
+
+    wlForm.hidden = true;
+    successNameEl.textContent = name;
+    wlSuccess.hidden = false;
+    localStorage.setItem('cc_wl_submitted', '1');
+  } catch (err){
+    wlNote.textContent = 'Could not reach the whitelist sheet right now — please try again shortly.';
+    wlNote.classList.add('error');
+    wlSubmitBtn.disabled = false;
+    wlSubmitBtn.textContent = '⚔️ Submit for Whitelist';
+  }
+});
+
+if (localStorage.getItem('cc_wl_submitted') === '1'){
+  rite1Check.disabled = false; rite1Check.checked = true; rite1Status.textContent = 'SEALED ✓'; rite1Status.classList.add('sealed'); riteCard1.classList.add('rite-sealed');
+  rite2Check.disabled = false; rite2Check.checked = true; rite2Status.textContent = 'SEALED ✓'; rite2Status.classList.add('sealed'); riteCard2.classList.add('rite-sealed');
+  presentLocked.hidden = true;
+  wlForm.hidden = true;
+  wlSuccess.hidden = false;
+  successNameEl.textContent = 'you';
+}
 </script>
 </body>
 </html>
